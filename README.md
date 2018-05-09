@@ -6,9 +6,6 @@ AngularJS test project
 
 clone the repository.
 
-go to folder "angular.test"
-
-
 install node modules
 
 ```sh
