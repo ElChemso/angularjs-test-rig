@@ -2,6 +2,51 @@
 <html>
     <head>
 
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+        <style>
+            #server_data_table td, #server_data_table td {
+                text-align: left;
+            }
+
+            #server_data_table td:first-child,#server_data_table th:first-child {
+                text-align: left;
+            }
+            .nav td:last-child {
+                text-align: right !important;
+            }
+
+            .r_header th {
+                background-color: #dfdfdf;
+                font-weight: bold;
+            }
+
+            th {
+                text-align: left;
+            }
+
+            td {
+                borer-bottom: 1px solid #eee;
+            }
+
+            tr:nth-child(odd) td {
+                background-color: #eee;
+            }
+
+            .mid_nav {
+                text-align: center;
+            }
+
+            #chartdiv {
+                width: 800px;
+                height: 400px;
+            }
+        </style>
     </head>
     <body ng-app="myApp">
     <test-component></test-component>
@@ -10,4 +55,3 @@
     <script src="angular.min.js"></script>
     <script src="devtestapp.min.js"></script>
 </html>
-

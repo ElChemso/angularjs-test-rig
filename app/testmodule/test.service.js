@@ -1,12 +1,23 @@
 angular.module('testModule').service('testService',['$http', function($http){
-    var getData = function() {
-        return $http.get('/data/testdata.json')
+    var getHistory = function() {
+        return $http.get('/data/historic.json')
         .then(function(response){
             return response.data;
         });
     };
 
+    var getServers = function() {
+            return $http.get('/data/server_data.json')
+            .then(function(response){
+                return response.data;
+            },function(){
+
+            });
+        };
+
+
     return {
-        getData:getData
+        getHistory:getHistory,
+        getServers:getServers
     };
 }]);

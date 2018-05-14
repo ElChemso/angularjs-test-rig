@@ -1,5 +1,31 @@
 <div>
-    {{model.msg}}
-    <br/>
-    {{model.servResult}}
+
+    <table id="server_data_table" cellpadding="5" cellspacing="0">
+        <thead>
+        <tr class="r_header">
+            <th ng-click="model.ord == '-name' ? model.ord = 'name' : model.ord = '-name'"> name </th>
+            <th ng-click="model.ord == '-log_count' ? model.ord = 'log_count' : model.ord = '-log_count'"> log count </th>
+            <th ng-click="model.ord == '-country' ? model.ord = 'country' : model.ord = '-country'"> country </th>
+            <th ng-click="model.ord == '-company' ? model.ord = 'company' : model.ord = '-company'"> company </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="server in model.server_data | orderBy: model.ord | limitTo: model.limit : model.start">
+                <td> {{server.name}} </td>
+                <td> {{server.log_count | number}} </td>
+                <td> {{server.country}} </td>
+                <td> {{server.company}} </td>
+            </tr>
+        <tr class="nav">
+            <td> <a href="javascript:;" ng-click="model.prev()"> prev </a> </td>
+            <td colspan="2" class="mid_nav"> {{model.page}}/{{model.pages}}</td>
+            <td> <a href="javascript:;" ng-click="model.next()"> next </a> </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="chartdiv"></div>
+
+    <table>
+        <tr ng-repeat="month "><td>  </td></tr>
+    </table>
 </div>
