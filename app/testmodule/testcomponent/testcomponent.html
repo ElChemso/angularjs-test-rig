@@ -1,5 +1,48 @@
-<div>
-    {{model.msg}}
-    <br/>
-    {{model.servResult}}
+<div ng-show="model.show_servers_table">
+<!--   {{model.msg}}-->
+    <h2 class="text-center">Server list</h2>
+
+    <div id="logchart">
+
+    </div>
+
+    <table class="table table-striped pagination-centered ml-3 table-hover" id="server-info" >
+        <thead>
+            <tr>
+                <th ng-repeat="header in model.table_headers" ng-click="model.order_by = header.index">{{ header.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="n in model.serverList | orderBy: model.order_by : reverse"
+                ng-if="n.myIndex <= (model.current_page * 5) && n.myIndex > (model.current_page * 5) - 5 ">
+
+                <td>{{n.myIndex}}</td>
+                <td>{{n.name}}</td>
+                <td>{{n.log_count | number}}</td>
+                <td>{{n.company}}</td>
+                <td>{{n.country}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+               <td class="text-center" colspan="42">
+                   Currently viewing page no.
+                   <select name="pager" id="page-selector" ng-model="model.current_page">
+                       <option ng-repeat="opt in model.pages" value="{{opt}}">{{opt}}</option>
+                   </select>
+               </td>
+            </tr>
+        </tfoot>
+    </table>
 </div>
+
+<div>
+    <h2 class="text-center"> Annual comparison </h2>
+      <ul class="float-left" style="float:left" ng-repeat="year in model.historic_data">
+          <li> {{ model.historic_data.indexOf(year) }} </li>
+          <li ng-repeat="month_val in year">
+              {{ model.months[$index] }}: {{ month_val[ model.months[$index] ] | number }}
+          </li>
+      </ul>
+</div>
+
